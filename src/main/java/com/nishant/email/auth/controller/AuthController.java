@@ -76,6 +76,11 @@ public class AuthController {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
     }
 
+    @GetMapping("/is-authenticated")
+    public ResponseEntity<Boolean> isAuthenticated(@CurrentSecurityContext(expression = "authentication?.name") String email) {
+        return ResponseEntity.ok(email != null && !email.isEmpty());
+    }
+
     @PostMapping("/reset-otp")
     public void sendResetOtp(@RequestParam String email) {
         try{

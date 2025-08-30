@@ -79,7 +79,8 @@ const EmailVerify = () => {
       setLoading(false);
     }
   }
-
+// implement this to redirect user to home page once email verified
+// (they should not be able to access email verify page again)
   useEffect(() => {
     isLoggedIn && userData && userData.isAccountVerified && navigate("/");
   }, [isLoggedIn, userData]);
